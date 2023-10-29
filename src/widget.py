@@ -9,7 +9,5 @@ def card_acc_info_mask(card_acc_info: str) -> str:
     card_acc_list = card_acc_info.strip().split()
     if card_acc_list[0] == "Счет":
         return f"{card_acc_list[0]} {get_account_mask(card_acc_list[1])}"
-    elif card_acc_list[0] == "Visa":
-        return f"{card_acc_list[0]} {card_acc_list[1]} {get_card_mask(card_acc_list[-1])}"
     else:
-        return f"{card_acc_list[0]} {get_card_mask(card_acc_list[-1])}"
+        return f'{" ".join(card_acc_list[:-1])} {get_card_mask(card_acc_list[-1])}'
