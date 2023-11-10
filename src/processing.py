@@ -12,9 +12,4 @@ def sort_transactions(transactions: list[dict], reverse: bool = True) -> list[di
     по ключу 'date' (по умолчанию в порядке убывания даты, т.е. от новой к старой). Если нужен порядок по
     возрастанию (от старой к новой), то нужно указать второй параметр False.
     """
-    filter_for_sort = lambda transaction: transaction["date"]
-
-    if not reverse:
-        return sorted(transactions, key=filter_for_sort)
-    else:
-        return sorted(transactions, key=filter_for_sort, reverse=True)
+    return sorted(transactions, key=lambda transaction: transaction["date"], reverse=reverse)
