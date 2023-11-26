@@ -10,8 +10,9 @@ def get_check_json(json_file_path: str) -> Any:
     """
     try:
         abs_path = os.path.abspath("..")
-        json_file_path_split = json_file_path.split("\\")
-        json_file_path_join = os.path.join(abs_path, json_file_path_split[3], json_file_path_split[4])
+        json_file_path_rep = json_file_path.replace("\\", "/")
+        json_file_path_split = json_file_path_rep.split("/")
+        json_file_path_join = os.path.join(abs_path, json_file_path_split[-2], json_file_path_split[-1])
 
         if os.path.exists(json_file_path_join):
             with open(json_file_path_join, encoding="utf-8") as file:
