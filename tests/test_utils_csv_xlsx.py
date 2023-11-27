@@ -8,7 +8,8 @@ from src.utils_csv_xlsx import read_data_csv_file, read_data_xlsx_file
 def test_read_data_csv_file():
     # Создание временного .csv файла для проверки
     test_csv_content = "a;b;c\n1;2;3\n4;5;6"
-    test_csv_filename = "F:\\SkyPro_projects_beta\\HW_1\\data\\test_data.csv"
+    abs_path = os.path.abspath("..")
+    test_csv_filename = os.path.join(abs_path, "data", "test_data.csv")
     with open(test_csv_filename, "w") as test_csv:
         test_csv.write(test_csv_content)
 
@@ -29,7 +30,8 @@ def test_read_data_csv_file_error():
 def test_read_data_xlsx_file():
     # Создание временного .xlsx файла для проверки
     test_xlsx_content = {"A": [1, 2, 3], "B": [4, 5, 6]}
-    test_xlsx_filename = "F:\\SkyPro_projects_beta\\HW_1\\data\\test_data.xlsx"
+    abs_path = os.path.abspath("..")
+    test_xlsx_filename = os.path.join(abs_path, "data", "test_data.xlsx")
     test_dataframe = pd.DataFrame(test_xlsx_content)
     test_dataframe.to_excel(test_xlsx_filename, index=False)
 
